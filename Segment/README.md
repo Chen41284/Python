@@ -1,11 +1,8 @@
-# Python
-医学图像项目中的Python代码
-
-## Segment
+# Segment
 使用区域生长与边缘检测的分割代码
 
 
-### start
+## start
 算法的主流程
 
 ```Python
@@ -37,7 +34,7 @@ start(file_dir, file_growing, file_edge):
 ```
 
 
-### preprocess
+## preprocess
 CT图像预处理
 ```Python
 # 读入CT图像，转为numpy的数组
@@ -52,7 +49,7 @@ wavelet_cw(image_data)
 image_reduce_dim(image_data)
 ```
 
-### edge_detection
+## edge_detection
 边缘检测的算法Roberts
 ```Python
 # 对小波变换后的图像进行边缘检测
@@ -63,7 +60,7 @@ cal_gradient_roberts(image_data, operator, z, y, x)
 roberts(image_data)
 ```
 
-### point_and_seed
+## point_and_seed
 种子点
 ```Python
 # 种子点的类
@@ -74,7 +71,7 @@ Point
 roberts_operator
 ```
 
-### seg_entropy
+## seg_entropy
 基于熵的分割算法
 ```Python
 # 区域生长的主体函数
@@ -83,7 +80,7 @@ growing(image_data, seed, grow_mark_all)
 cal_avg(image_data, z, y, x)
 ```
 
-### volumerendering
+## volumerendering
 将分割后的数据保存，用于后续的体会渲染
 ```Python
 # 将区域生长的数据进行保存

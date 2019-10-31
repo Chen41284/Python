@@ -2,7 +2,7 @@ import os
 import vmtk.vmtkimagereader as imagereader
 import vmtk.vmtkimageviewer as imageviewer
 import vmtk.vmtkimageobjectenhancement as imageEnhance
-# 图像的水平集分割，生成等值面
+# 计算特征图像以用于分割
 def imageObjectEnhance():
     input_datadir = 'C:/Users/chenjiaxing/Desktop/CT-Data/png/WU_Lung_Vessel_Ext/'
     reader = imagereader.vmtkImageReader()
