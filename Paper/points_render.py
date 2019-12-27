@@ -70,6 +70,16 @@ class KeyPressInteractorStyle(vtk.vtkInteractorStyleTrackballCamera):
                 print("Update")
             else:
                 print("Not More data")
+        elif key == "minus":
+            size = self.actor.GetProperty().GetPointSize()
+            size -= 1
+            self.actor.GetProperty().SetPointSize(size)
+            self.interactor.GetRenderWindow().Render()
+        elif key == "plus":
+            size = self.actor.GetProperty().GetPointSize()
+            size += 1
+            self.actor.GetProperty().SetPointSize(size)
+            self.interactor.GetRenderWindow().Render()
         else:
             print(key)
     
@@ -103,7 +113,6 @@ class KeyPressInteractorStyle(vtk.vtkInteractorStyleTrackballCamera):
         self.interactor.GetRenderWindow().Render()
 
 def points_reader(feature_points_path, dirpath):
-    points = vtk.vtkPoints()
     vertice_number = 0
     feature_vertices = []
     with open(feature_points_path, 'r') as f1:
@@ -119,19 +128,9 @@ def points_reader(feature_points_path, dirpath):
     points_render(points, dirpath, vertice_number)
 
 
-def points_render(points, dirpath, vertice_number):
+def points_render(points, dirpath = None, vertice_number = None):
     colors = vtk.vtkNamedColors()
     points_actor = create_points_actor(points)
-    # Create the widget
-    textActor = vtk.vtkTextActor()
-    textActor.SetInput("KeyPress 'F5' to Refresh")
-    textActor.GetTextProperty().SetColor( 0.0, 1.0, 0.0 )
-    textWidget = vtk.vtkTextWidget()
-
-    textRepresentation = vtk.vtkTextRepresentation()
-    textRepresentation.GetPositionCoordinate().SetValue( .05, .05 )
-    textRepresentation.GetPosition2Coordinate().SetValue( .1, .1 )
-    textWidget.SetRepresentation( textRepresentation )
 
     # Create a renderer, render window, and interactor
     renderer = vtk.vtkRenderer()
@@ -140,16 +139,28 @@ def points_render(points, dirpath, vertice_number):
     renderWindowInteractor =  vtk.vtkRenderWindowInteractor()
     renderWindowInteractor.SetRenderWindow(renderWindow)
 
-    textWidget.SetInteractor(renderWindowInteractor)
-    textWidget.SetTextActor(textActor)
-    textWidget.SelectableOff()
-    textWidget.EnabledOn()
 
-    # callback = UpdateObserver(points, dirpath, renderer)
-    # renderWindowInteractor.AddObserver('KeyPressEvent', callback)
+    if dirpath is not None and vertice_number is not None:
+        # Create the widget
+        textActor = vtk.vtkTextActor()
+        textActor.SetInput("KeyPress 'F5' to Refresh")
+        textActor.GetTextProperty().SetColor( 0.0, 1.0, 0.0 )
+        textWidget = vtk.vtkTextWidget()
 
-    style = KeyPressInteractorStyle(points, dirpath, renderWindowInteractor, vertice_number, points_actor)
-    renderWindowInteractor.SetInteractorStyle(style)
+        textRepresentation = vtk.vtkTextRepresentation()
+        textRepresentation.GetPositionCoordinate().SetValue( .05, .05 )
+        textRepresentation.GetPosition2Coordinate().SetValue( .1, .1 )
+        textWidget.SetRepresentation( textRepresentation )
+        textWidget.SetInteractor(renderWindowInteractor)
+        textWidget.SetTextActor(textActor)
+        textWidget.SelectableOff()
+        textWidget.EnabledOn()
+
+        # callback = UpdateObserver(points, dirpath, renderer)
+        # renderWindowInteractor.AddObserver('KeyPressEvent', callback)
+
+        style = KeyPressInteractorStyle(points, dirpath, renderWindowInteractor, vertice_number, points_actor)
+        renderWindowInteractor.SetInteractorStyle(style)
 
     # Add the actor to the scene
     renderer.AddActor(points_actor)

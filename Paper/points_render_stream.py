@@ -106,10 +106,8 @@ class KeyPressInteractorStyle(vtk.vtkInteractorStyleTrackballCamera):
         self.actor = create_points_actor(self.points)
         self.interactor.GetRenderWindow().GetRenderers().GetFirstRenderer().AddActor(self.actor)
         self.interactor.GetRenderWindow().Render()
-        self.interactor.GetRenderWindow().Render()
 
 def points_reader(feature_points_path, steamfile):
-    points = vtk.vtkPoints()
     vertice_number = 0
     feature_vertices = []
     with open(feature_points_path, 'r') as f1:
