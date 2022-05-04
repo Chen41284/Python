@@ -1,0 +1,72 @@
+<?xml version="1.0" ?><point_set_file>
+    <file_version>0.1</file_version>
+    <point_set>
+        <time_series>
+            <time_series_id>0</time_series_id>
+            <Geometry3D ImageGeometry="false" FrameOfReferenceID="0">
+                <IndexToWorld type="Matrix3x3" m_0_0="1" m_0_1="0" m_0_2="0" m_1_0="0" m_1_1="1" m_1_2="0" m_2_0="0" m_2_1="0" m_2_2="1"/>
+                <Offset type="Vector3D" x="0" y="0" z="0"/>
+                <Bounds>
+                    <Min type="Vector3D" x="37.516" y="38.646" z="12.656"/>
+                    <Max type="Vector3D" x="62.376000000000005" y="67.8" z="21.244"/>
+                </Bounds>
+            </Geometry3D>
+            <point>
+                <id>0</id>
+                <specification>0</specification>
+                <x>37.516</x>
+                <y>64.862</y>
+                <z>17.854</z>
+            </point>
+            <point>
+                <id>1</id>
+                <specification>0</specification>
+                <x>39.324</x>
+                <y>58.760000000000005</y>
+                <z>13.334</z>
+            </point>
+            <point>
+                <id>2</id>
+                <specification>0</specification>
+                <x>39.550000000000004</x>
+                <y>58.760000000000005</y>
+                <z>14.012</z>
+            </point>
+            <point>
+                <id>3</id>
+                <specification>0</specification>
+                <x>47.46</x>
+                <y>38.646</y>
+                <z>16.272000000000002</z>
+            </point>
+            <point>
+                <id>4</id>
+                <specification>0</specification>
+                <x>53.336</x>
+                <y>67.8</y>
+                <z>17.402</z>
+            </point>
+            <point>
+                <id>5</id>
+                <specification>0</specification>
+                <x>54.692</x>
+                <y>57.404</y>
+                <z>12.656</z>
+            </point>
+            <point>
+                <id>6</id>
+                <specification>0</specification>
+                <x>59.212</x>
+                <y>49.268</y>
+                <z>18.306</z>
+            </point>
+            <point>
+                <id>7</id>
+                <specification>0</specification>
+                <x>62.376000000000005</x>
+                <y>44.07</y>
+                <z>21.244</z>
+            </point>
+        </time_series>
+    </point_set>
+</point_set_file>
